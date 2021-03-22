@@ -53,25 +53,29 @@ public class Ex6 {
         );
 
         waitForElementAndClick(
-                By.id("org.wikipedia:id/horizontal_scroll_list_item_text"),
-                "Can't find 'Kotlin Island'",
+                By.xpath("//*[contains(@text,'Kotline')]"),
+                "Can't find 'Kotline'",
                 10
         );
 
-        String search_attribute = "//*[contains(@text,'Kotlin Island')]";
 
-        assertElementPresent(
-                search_attribute,
-                "//*[contains(@text,'Kotlin Island')]",
-                "Not equals titles"
+        String title = "Kotline";
+
+        assertElementHasText(
+                By.xpath("//*[contains(@text,'Kotline')]"),
+                "text",
+                title,
+                "Text is not contain '" + title ,
+                0
         );
     }
 
-    private void assertElementPresent(String searchElement, String attributeName, String error_message) {
+    private void assertElementHasText(By by, String attributeName, String expectedText, String error_message,long timeoutSeconds) {
+        WebElement element = waitForElementPresent(by, error_message,timeoutSeconds);
         Assert.assertEquals(
-                "Not equals elements",
-                searchElement,
-                attributeName
+                "Texts are not equals",
+                expectedText,
+                element.getAttribute(attributeName)
         );
     }
 
