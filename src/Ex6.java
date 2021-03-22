@@ -57,23 +57,22 @@ public class Ex6 {
                 "Can't find 'Kotline'",
                 10
         );
+        
+        String search_title = "Kotline";
 
-
-        String title = "Kotline";
-
-        assertElementHasText(
+        assertElementPresent(
                 By.xpath("//*[contains(@text,'Kotline')]"),
                 "text",
-                title,
-                "Text is not contain '" + title ,
-                0
+                search_title,
+                "The text does not contain " + search_title ,
+                5
         );
     }
 
-    private void assertElementHasText(By by, String attributeName, String expectedText, String error_message,long timeoutSeconds) {
+    private void assertElementPresent(By by, String attributeName, String expectedText, String error_message,long timeoutSeconds) {
         WebElement element = waitForElementPresent(by, error_message,timeoutSeconds);
         Assert.assertEquals(
-                "Texts are not equals",
+                "Titles are not equals",
                 expectedText,
                 element.getAttribute(attributeName)
         );
