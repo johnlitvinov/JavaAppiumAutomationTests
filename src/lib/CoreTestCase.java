@@ -20,8 +20,6 @@ public class CoreTestCase extends TestCase {
     protected void setUp() throws Exception {
 
         super.setUp();
-//
-//        DesiredCapabilities capabilities = this.getCapabilitiesByPlatformEnv();
         driver = this.getDriverByPlatformEnv();
         this.rotateScreenToPortrait();
     }

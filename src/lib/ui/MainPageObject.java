@@ -6,10 +6,10 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.regex.Pattern;
 
@@ -80,16 +80,12 @@ public class MainPageObject {
         int lower_y = upper_y + element.getSize().getHeight();
         int middle_y = (upper_y + lower_y) / 2;
 
-
         TouchAction action = new TouchAction(driver);
         action.press(PointOption.point(right_x, middle_y));
         action.waitAction(WaitOptions.waitOptions(Duration.ofMillis(300)));
-//        action .press(right_x, middle_y)
-//                .waitAction(150)
-//                .moveTo(left_x,middle_y)
-//                .release()
-//                .perform();
-
+        action.moveTo(PointOption.point(left_x, middle_y));
+        action.release();
+        action.perform();
     }
 
     void clickByCordinate(int xPoint, int yPoint) throws InterruptedException {

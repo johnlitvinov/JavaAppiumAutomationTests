@@ -49,7 +49,6 @@ public class MyListsObject extends MainPageObject {
                 art_name,
                 "Can't delete  articale"
         );
-
         this.waitForArticaletitleDisappeare(articale_name);
     }
 }//end class
