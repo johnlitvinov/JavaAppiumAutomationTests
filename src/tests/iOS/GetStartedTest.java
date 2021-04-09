@@ -2,8 +2,11 @@ package tests.iOS;
 
 import lib.CoreTestCase;
 import lib.Platform;
+import lib.ui.SearchPageObject;
+import lib.ui.factories.SearchPageObjectFactory;
 import lib.ui.ios.iOSSearchPageObject;
 import org.junit.Test;
+import lib.ui.factories.SearchPageObjectFactory;
 
 public class GetStartedTest extends CoreTestCase {
 
@@ -11,9 +14,9 @@ public class GetStartedTest extends CoreTestCase {
     public void test()  {
     if (Platform.getInstance().isAndroid()){ return;}
 
-    iOSSearchPageObject iOSSearchPageObject = new iOSSearchPageObject(driver);
-    iOSSearchPageObject.initSearchInput();
-    iOSSearchPageObject.sendKeysForIOS("Java");
-    iOSSearchPageObject.clickCancelButton();
+    SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
+    SearchPageObject.initSearchInput();
+    SearchPageObject.sendKeysForIOS("Java");
+   
   }
 }//end class
