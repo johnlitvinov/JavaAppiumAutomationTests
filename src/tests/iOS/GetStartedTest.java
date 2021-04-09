@@ -1,14 +1,19 @@
 package tests.iOS;
 
 import lib.CoreTestCase;
-import lib.ui.WelcomePageObject;
+import lib.Platform;
+import lib.ui.ios.iOSSearchPageObject;
 import org.junit.Test;
 
 public class GetStartedTest extends CoreTestCase {
 
 @Test
-    public void testPassThriughWelcomeWindows() throws InterruptedException {
-    WelcomePageObject welcomePageObject = new WelcomePageObject(driver);
-    welcomePageObject.goThroughWelcomePages();
+    public void test()  {
+    if (Platform.getInstance().isAndroid()){ return;}
+
+    iOSSearchPageObject iOSSearchPageObject = new iOSSearchPageObject(driver);
+    iOSSearchPageObject.initSearchInput();
+    iOSSearchPageObject.sendKeysForIOS("Java");
+    iOSSearchPageObject.clickCancelButton();
   }
-}
+}//end class

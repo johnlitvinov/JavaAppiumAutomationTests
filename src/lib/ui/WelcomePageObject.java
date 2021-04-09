@@ -6,7 +6,8 @@ public class WelcomePageObject extends MainPageObject {
 
     private static String
             FIRST_PAGE_LABLE = "id:The free encyclopedia",
-            SEARCH_LINE = "id:Search Wikipedia";
+            SEARCH_LINE = "id:Search Wikipedia",
+            SKIP_BUTTON = "xpath://XCUIElementTypeButton[@name='Skip']";
 
     public WelcomePageObject(AppiumDriver driver) {
         super(driver);
@@ -19,7 +20,11 @@ public class WelcomePageObject extends MainPageObject {
                 10
         );
 
-        this.clickByCordinate(90, 834);
+        this.waitForElementAndClick(
+                SKIP_BUTTON,
+                "Can't find 'SKIP'",
+                10
+        ); //    this.clickByCordinate(90, 834);
 
         this.waitForElementPresent(
                 SEARCH_LINE,
@@ -28,3 +33,5 @@ public class WelcomePageObject extends MainPageObject {
         );
     }
 }//end class
+
+

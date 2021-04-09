@@ -1,16 +1,17 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
-public class SearchPageObject extends MainPageObject {
+abstract public class SearchPageObject extends MainPageObject {
 
-
-    private static final String
-            SEARCH_INIT_ELEMENT = "xpath://*[contains(@text,'Search Wikipedia')]",
-            SEARCH_INPUT = "id:org.wikipedia:id/search_src_text",
-            SEARCH_CANCEL_BUTTON = "id:org.wikipedia:id/search_close_btn",
-            SEARCH_RESULT_BY_SUBSTRING_TMP = "xpath://*[contains(@text,'{SUBSTRING}')]";
-
+    protected static String
+            SEARCH_INIT_ELEMENT,
+            SEARCH_INPUT,
+            SEARCH_CANCEL_BUTTON,
+            SEARCH_RESULT_BY_SUBSTRING_TMP,
+            SEARCH_EMPTY_RESULT;
 
     public SearchPageObject(AppiumDriver driver) {
         super(driver);
@@ -54,5 +55,14 @@ public class SearchPageObject extends MainPageObject {
 
     public void clickCancelButton() {
         waitForElementAndClick(SEARCH_CANCEL_BUTTON, "Can't tap X button", 10);
+    }
+
+    public void sendKeysForIOS(String value) {
+        waitForElementAndSendKeysForIOS(
+                SEARCH_INPUT,
+                value,
+                "Can't input Data to the search line",
+                15
+        );
     }
 }//end class

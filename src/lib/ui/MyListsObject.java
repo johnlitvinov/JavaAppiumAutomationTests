@@ -1,17 +1,17 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import lib.Platform;
 
-public class MyListsObject extends MainPageObject {
+abstract public class MyListsObject extends MainPageObject {
 
-    private static String
-            FOLDER_NAME_TP = "xpath://*[contains(@text,'{FOLDERNAME}')]",
-            ARTICAL_TO_DELETE_TP = "xpath://*[contains(@text,'{ARTICALENAME}')]";
+    protected static String
+            FOLDER_NAME_TP,
+            ARTICAL_TO_DELETE_TP;
 
     private static String getArticalToDeleteTp(String articale_name) {
         return ARTICAL_TO_DELETE_TP.replace("{ARTICALENAME}", articale_name);
     }
-
 
     private static String getFolderByXpath(String name_folder) {
         return FOLDER_NAME_TP.replace("{FOLDERNAME}", name_folder);
@@ -20,7 +20,6 @@ public class MyListsObject extends MainPageObject {
     public MyListsObject(AppiumDriver driver) {
         super(driver);
     }
-
 
     public void openFolderByName(String name_folder) {
         String folder_xpath = getFolderByXpath(name_folder);
@@ -50,5 +49,10 @@ public class MyListsObject extends MainPageObject {
                 "Can't delete  articale"
         );
         this.waitForArticaletitleDisappeare(articale_name);
+
+
+        if (Platform.getInstance().isIOS()) {
+            this.clickElementToTHeRightUpperCorner(articale_name, "Cant find saved article");
+        }
     }
 }//end class

@@ -2,20 +2,21 @@ package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
+import lib.Platform;
 
-public class ArticalePageObject extends MainPageObject {
+abstract public class ArticalePageObject extends MainPageObject {
 
-    private static final String
-            TITLE = "xpath://*[contains(@text,'Kotline')]",
-            OPTION_BUTTON = "xpath://android.widget.ImageView[@content-desc=\"More options\"]",
-            ADD_TO_MY_LIST_OPTION = "xpath://*[contains(@text,'Add to reading list')]",
-            ADD_TO_MY_LIST_OVERLAY = "id:org.wikipedia:id/onboarding_button",
-            INPUT = "id:org.wikipedia:id/text_input",
-            OK_BUTTON = "xpath://*[contains(@text,'OK')]",
-            CROSS_BUTTON = "xpath://android.widget.ImageButton[@content-desc='Navigate up']",
-            MORE_OPTIONS = "xpath://android.widget.ImageView[@content-desc=\"More options\"]",
-            ADD_TO_READING_LIST = "xpath://*[contains(@text,'Add to reading list')]",
-            PRESS_FOLDER = "xpath://*[contains(@text,'Kotlin_folder')]";
+    protected static String
+            TITLE,
+            OPTION_BUTTON,
+            ADD_TO_MY_LIST_OPTION,
+            ADD_TO_MY_LIST_OVERLAY,
+            INPUT,
+            OK_BUTTON,
+            CROSS_BUTTON,
+            MORE_OPTIONS,
+            ADD_TO_READING_LIST,
+            PRESS_FOLDER;
 
     public ArticalePageObject(AppiumDriver driver) {
         super(driver);
@@ -31,7 +32,12 @@ public class ArticalePageObject extends MainPageObject {
 
     public String getArticaleTitle() {
         WebElement title_element = waitForTitleElement();
-        return title_element.getAttribute("text");
+        if (Platform.getInstance().isAndroid()) {
+            return title_element.getAttribute("text");
+        } else {
+            return title_element.getAttribute("name");
+        }
+
     }
 
     public void addArticleToMyList(String name_of_folder) {
@@ -55,13 +61,13 @@ public class ArticalePageObject extends MainPageObject {
         );
 
         this.waitForElementAndClear(
-               INPUT,
+                INPUT,
                 "Can't clear text",
                 10
         );
 
         this.waitForElementAndSendKeys(
-               INPUT,
+                INPUT,
                 name_of_folder,
                 "Can't input text",
                 10
@@ -101,4 +107,14 @@ public class ArticalePageObject extends MainPageObject {
                 5
         );
     }
+
+
+    public void addArticalToMeSavedList() {
+        this.waitForElementAndClick(
+                ADD_TO_MY_LIST_OPTION,
+                "Cant find option to saved Articale to MyList",
+                10
+        );
+    }
+
 }//end class
