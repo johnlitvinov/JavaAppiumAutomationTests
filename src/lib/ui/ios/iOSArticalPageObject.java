@@ -11,6 +11,7 @@ public class iOSArticalPageObject extends ArticalePageObject {
         TITLE = "xpath://XCUIElementTypeOther[@name='Kotline']";
         ADD_TO_MY_LIST_OPTION = "xpath://XCUIElementTypeButton[@name='Save for later']";
         CROSS_BUTTON = "id:Back";
+        CELL = "// XCUIElementTypeApplication[@name='Wikipedia']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell";
 
 
         MORE_OPTIONS = "xpath://android.widget.ImageView[@content-desc=\"More options\"]";

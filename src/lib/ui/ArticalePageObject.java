@@ -16,7 +16,8 @@ abstract public class ArticalePageObject extends MainPageObject {
             CROSS_BUTTON,
             MORE_OPTIONS,
             ADD_TO_READING_LIST,
-            PRESS_FOLDER;
+            PRESS_FOLDER,
+            CELL;
 
     public ArticalePageObject(AppiumDriver driver) {
         super(driver);
@@ -117,4 +118,11 @@ abstract public class ArticalePageObject extends MainPageObject {
         );
     }
 
+    public WebElement checkCellOnTheScreen() {
+        return this.waitForElementPresent(
+                CELL,
+                "Can't find Title",
+                10
+        );
+    }
 }//end class

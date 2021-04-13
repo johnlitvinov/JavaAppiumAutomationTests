@@ -12,11 +12,12 @@ public class GetStartedTest extends CoreTestCase {
 
 @Test
     public void test()  {
-    if (Platform.getInstance().isAndroid()){ return;}
+//    if (Platform.getInstance().isAndroid()){ return;}
 
     SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
     SearchPageObject.initSearchInput();
-    SearchPageObject.sendKeysForIOS("Java");
-   
+    String search_line = "Kotlin";
+    SearchPageObject.typeSearchLine(search_line);
+//  SearchPageObject.sendKeysForIOS("Java");
   }
 }//end class

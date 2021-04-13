@@ -16,6 +16,7 @@ public class AndroidArticalPageObject extends ArticalePageObject
         MORE_OPTIONS = "xpath://android.widget.ImageView[@content-desc=\"More options\"]";
         ADD_TO_READING_LIST = "xpath://*[contains(@text,'Add to reading list')]";
         PRESS_FOLDER = "xpath://*[contains(@text,'Kotlin_folder')]";
+        CELL = "";
     }
 
     public AndroidArticalPageObject(AppiumDriver driver) {
